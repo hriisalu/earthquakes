@@ -1,0 +1,25 @@
+Package: earthquakes
+Type: Package
+Title: A package to analyze NOAA Significant Earthquakes data
+Version: 0.1.0
+Author: HR
+Maintainer: HR <hr@example.com>
+Description: This package provides tools to analyze the NOAA Significant Earthquakes dataset.
+License: GPL (>= 3)
+Imports:
+    dplyr,
+    lubridate,
+    magrittr,
+    tools,
+    ggplot2,
+    grid,
+    rlang,
+    leaflet,
+    utils
+Roxygen: list(markdown = TRUE)
+LazyData: true
+RoxygenNote: 7.2.3
+Encoding: UTF-8
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
