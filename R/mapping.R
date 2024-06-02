@@ -20,9 +20,11 @@
 #' @importFrom rlang .data
 #' @export
 eq_create_label <- function(data_create_label = rlang::.data) {
-  paste("<b>Location: </b>", data_create_label$LOCATION_NAME,"<br>",
-        "<b>Magnitude: </b>", data_create_label$MAG,"<br>",
-        "<b>Total deaths: </b>", data_create_label$TOTAL_DEATHS, sep ="")
+  paste("<b>Location: </b>", data_create_label$LOCATION_NAME, "<br>",
+    "<b>Magnitude: </b>", data_create_label$MAG, "<br>",
+    "<b>Total deaths: </b>", data_create_label$TOTAL_DEATHS,
+    sep = ""
+  )
 }
 
 #' Visualize Earthquake Epicenters on a Map
@@ -58,12 +60,14 @@ eq_map <- function(data_map = rlang::.data, annot_col) {
   leaflet::leaflet(data_map) %>%
     leaflet::addTiles() %>%
     # Adding circles in each Earthquake point.
-    leaflet::addCircles(lng = ~LONGITUDE,
-                        lat = ~LATITUDE,
-                        weight = 1,
-                        radius = ~MAG * 10000,
-                        # Plotting a simple information inside of the popup.
-                        popup = ~eval(parse(text = annot_col)) ) -> map_to_plot
+    leaflet::addCircles(
+      lng = ~LONGITUDE,
+      lat = ~LATITUDE,
+      weight = 1,
+      radius = ~ MAG * 10000,
+      # Plotting a simple information inside of the popup.
+      popup = ~ eval(parse(text = annot_col))
+    ) -> map_to_plot
 
   # Returning the map with circles
   return(map_to_plot)

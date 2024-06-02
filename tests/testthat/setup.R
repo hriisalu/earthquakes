@@ -1,8 +1,9 @@
 # Libraries for testing
-
 library(testthat)
 library(dplyr)
-library(ggplot2)
 library(grid)
 suppressWarnings(library(leaflet))
 library(earthquakes)
+
+# Load ggplot2 without attaching it to the global environment
+requireNamespace("ggplot2", quietly = TRUE)

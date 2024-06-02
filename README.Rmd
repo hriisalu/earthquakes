@@ -31,7 +31,6 @@ devtools::install_github("hriisalu/earthquakes", build_vignettes = TRUE, force =
 The dataset is included in the package and can be loaded as follows:
 
 ```{r read, message = FALSE, warning = FALSE}
-
 raw_data <- read.delim(system.file("extdata", "earthquakes.tsv", package = "earthquakes"), header = TRUE, sep = "\t")
 ```
 
@@ -57,7 +56,7 @@ First, filter the data for a specific country (or countries) and a specific time
 
 ```{r filter}
 filtered_data <- cleaned_data %>%
- filter(YEAR > 1900, !is.na(DEATHS), !is.na(MAG), !is.na(DATE), COUNTRY == "MEXICO")
+  filter(YEAR > 1900, !is.na(DEATHS), !is.na(MAG), !is.na(DATE), COUNTRY == "MEXICO")
 ```
 
 Using `ggplot` and adding the `geom_timeline` function creates a timeline of significant earthquakes. The size of the points represents the magnitude of the earthquakes. The `x` aesthetic represents the date (column `DATE`), the `y` aesthetic is a factor indicating the country (column `COUNTRY`), the `size` aesthetic represents the magnitude (column `MAG`), and the `colour` aesthetic represents the number of deaths (column `DEATHS`).
@@ -93,7 +92,6 @@ filtered_data$popup_text <- eq_create_label(filtered_data)
 The `eq_map function` plots the earthquake events on an interactive map. The function arguments are the dataset, where you have filtered for a specific country and time period, and the column containing the annotation text for the popup window.
 
 ```{r map, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
-
 eq_map(filtered_data, "popup_text")
 ```
 

@@ -17,7 +17,7 @@ sample_data <- data.frame(
 
 test_that("eq_map returns a leaflet map object", {
   map <- eq_map(sample_data, "popup_text")
-  #expect_is(map, "leaflet")
+  # expect_is(map, "leaflet")
   expect_true(inherits(map, "leaflet"))
 })
 
@@ -30,11 +30,10 @@ test_that("eq_map adds the correct number of circles to the map", {
   # Count the number of circles
   circle_layers <- sum(sapply(layers, function(call) {
     if (call$method == "addCircles") {
-      return(length(call$args[[1]]))  # Length of the data argument
+      return(length(call$args[[1]])) # Length of the data argument
     }
     return(0)
   }))
 
   expect_equal(circle_layers, nrow(sample_data))
 })
-

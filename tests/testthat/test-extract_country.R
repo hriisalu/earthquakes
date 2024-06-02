@@ -14,4 +14,3 @@ test_that("extract_country handles missing values", {
   expect_equal(extract_country(NA), NA)
   expect_equal(extract_country(""), NA)
 })
-

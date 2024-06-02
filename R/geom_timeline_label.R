@@ -24,9 +24,9 @@
 #'
 #' # Example dataset
 #' earthquakes <- data.frame(
-#'   date = as.Date(c('2000-01-01', '2001-01-01', '2002-01-01')),
+#'   date = as.Date(c("2000-01-01", "2001-01-01", "2002-01-01")),
 #'   magnitude = c(7.0, 6.5, 8.0),
-#'   location = c('Place A', 'Place B', 'Place C')
+#'   location = c("Place A", "Place B", "Place C")
 #' )
 #'
 #' # Basic ggplot
@@ -45,7 +45,6 @@ geom_timeline_label <- function(mapping = NULL,
                                 na.rm = FALSE,
                                 show.legend = NA,
                                 inherit.aes = TRUE, ...) {
-
   ggplot2::layer(
     geom = GeomTimelineLabel,
     mapping = mapping,
@@ -70,7 +69,7 @@ geom_timeline_label <- function(mapping = NULL,
 GeomTimelineLabel <- ggplot2::ggproto(
   "GeomTimelineLabel", ggplot2::Geom,
   required_aes = c("x"),
-  optional_aes = c('label', 'y', 'mag', 'color', 'alpha', 'n_max'),
+  optional_aes = c("label", "y", "mag", "color", "alpha", "n_max"),
   default_aes = ggplot2::aes(y = 0.3, n_max = 5, stroke = 1.0, size = 15, colour = "grey", fill = "grey", alpha = 0.4),
   draw_key = ggplot2::draw_key_point,
   draw_panel = function(data, panel_params, coord) {

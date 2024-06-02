@@ -11,8 +11,8 @@ test_that("eq_clean_data handles missing columns", {
     Year = c(2020, 2021),
     Mo = c(1, 2),
     Dy = c(1, 2),
-    #Latitude = c(40.7128, 37.7749),
-    #Longitude = c(-74.0060, -122.4194),
+    # Latitude = c(40.7128, 37.7749),
+    # Longitude = c(-74.0060, -122.4194),
     Location.Name = c("New York", "San Francisco"),
     Deaths = c(10, 5)
   )

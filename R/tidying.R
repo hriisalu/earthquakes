@@ -15,9 +15,11 @@
 #' @export
 extract_country <- function(location_name) {
   ifelse(location_name == "" | is.na(location_name), NA,
-         ifelse(grepl(":", location_name),
-                sub(":.*", "", location_name),
-                location_name))
+    ifelse(grepl(":", location_name),
+      sub(":.*", "", location_name),
+      location_name
+    )
+  )
 }
 
 
@@ -37,13 +39,17 @@ extract_country <- function(location_name) {
 #' @export
 eq_location_clean <- function(location) {
   ifelse(is.na(location) | location == "", NA,
-                ifelse(grepl(":", location), {
-                  cleaned_location <- sub("^[^:]*:", "", location)  # Remove everything before the first colon
-                  cleaned_location <- trimws(cleaned_location)  # Remove leading and trailing whitespace
-                  cleaned_location <- tolower(cleaned_location)  # Convert to lowercase
-                  cleaned_location <- tools::toTitleCase(cleaned_location)  # Convert to title case
-                  cleaned_location
-                }, NA))
+    ifelse(grepl(":", location),
+      {
+        cleaned_location <- sub("^[^:]*:", "", location) # Remove everything before the first colon
+        cleaned_location <- trimws(cleaned_location) # Remove leading and trailing whitespace
+        cleaned_location <- tolower(cleaned_location) # Convert to lowercase
+        cleaned_location <- tools::toTitleCase(cleaned_location) # Convert to title case
+        cleaned_location
+      },
+      NA
+    )
+  )
 }
 
 
@@ -56,7 +62,8 @@ eq_location_clean <- function(location) {
 #' @examples
 #' \dontrun{
 #' raw_data <- read.delim(system.file("extdata", "earthquakes.tsv",
-#'   package = "earthquakes"), header = TRUE, sep = "\t")
+#'   package = "earthquakes"
+#' ), header = TRUE, sep = "\t")
 #' cleaned_data <- eq_clean_data(raw_data)
 #' head(cleaned_data)
 #' }
@@ -76,15 +83,14 @@ eq_clean_data <- function(raw_data = rlang::.data) {
     stop(paste("Dataframe must have columns:", paste(missing_columns, collapse = ", ")))
   }
   dat <- raw_data %>%
-    dplyr::rename_all(~toupper(gsub("\\.", "_", .))) %>%  # Convert column names to uppercase and replace dots with underscores
+    dplyr::rename_all(~ toupper(gsub("\\.", "_", .))) %>% # Convert column names to uppercase and replace dots with underscores
     dplyr::mutate(
-      DATE = lubridate::make_date(YEAR, MO, DY),  # Create date column
-      LATITUDE = as.numeric(LATITUDE),  # Convert to numeric
-      LONGITUDE = as.numeric(LONGITUDE),  # Convert to numeric
-      COUNTRY = extract_country(LOCATION_NAME),  # Extract country
-      LOCATION_NAME = eq_location_clean(LOCATION_NAME)  # Clean location name
+      DATE = lubridate::make_date(YEAR, MO, DY), # Create date column
+      LATITUDE = as.numeric(LATITUDE), # Convert to numeric
+      LONGITUDE = as.numeric(LONGITUDE), # Convert to numeric
+      COUNTRY = extract_country(LOCATION_NAME), # Extract country
+      LOCATION_NAME = eq_location_clean(LOCATION_NAME) # Clean location name
     ) %>%
-    dplyr::select(-MO, -DY, -HR, -MN, -SEC)  # Remove unnecessary columns
+    dplyr::select(-MO, -DY, -HR, -MN, -SEC) # Remove unnecessary columns
   return(dat)
 }
-

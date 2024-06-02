@@ -11,7 +11,7 @@ test_that("GeomTimelineLabel has correct required aesthetics", {
 })
 
 sample_data <- data.frame(
-  DATE = as.Date(c('1902-01-16', '1907-04-15', '1920-01-03', '1928-06-17')),
+  DATE = as.Date(c("1902-01-16", "1907-04-15", "1920-01-03", "1928-06-17")),
   COUNTRY = c("Mexico", "Mexico", "Mexico", "Mexico"),
   MAG = c(7.0, 8.3, 7.8, 7.7),
   DEATHS = c(2, 8, 648, 4),

@@ -74,15 +74,13 @@ GeomTimeline <- ggplot2::ggproto(
       )
     )
 
-    y_line_centers <- unique(coords$y)
+    y_line_center <- unique(coords$y)
 
-    lines <- do.call(grid::gList, lapply(y_line_centers, function(y) {
-      grid::polylineGrob(
-        x = unit(c(0, 1), "npc"),
-        y = unit(c(y, y), "npc"),
-        gp = grid::gpar(col = "grey")
-      )
-    }))
+    lines <- grid::polylineGrob(
+      x = unit(c(0, 1), "npc"),
+      y = unit(c(y_line_center, y_line_center), "npc"),
+      gp = grid::gpar(col = "grey")
+    )
 
     return(grid::gList(points, lines))
   }
