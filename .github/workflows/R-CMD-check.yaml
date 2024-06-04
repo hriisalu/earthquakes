@@ -1,56 +1,32 @@
-name: R-CMD-check
+# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
 
-on: [push, pull_request]
+name: R-CMD-check
 
 jobs:
   R-CMD-check:
     runs-on: ubuntu-latest
-
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      R_KEEP_PKG_SOURCE: yes
     steps:
       - uses: actions/checkout@v4
 
       - uses: r-lib/actions/setup-r@v2
         with:
-          r-version: '4.4.0'
+          use-public-rspm: true
 
-      - name: Check R version
-        run: |
-          R -e 'cat(R.version.string, "\n")'
-
-      - name: Install R dependencies (using cache)
-        uses: actions/cache@v4
+      - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          path: ${{ runner.temp }}/Rlibs
-          key: ${{ runner.os }}-r-4.4.0
-          restore-keys: |
-            ${{ runner.os }}-r-
+          extra-packages: any::rcmdcheck
+          needs: check
 
-      - name: Install system dependencies (if needed)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libcurl4-openssl-dev libxml2-dev libssl-dev
-
-      - name: Install R packages
-        run: |
-          Rscript -e 'install.packages(c("rmarkdown", "devtools", "roxygen2"))'
-
-      - name: Render vignettes (using R)
-        run: |
-          R -e "files <- list.files('vignettes', pattern = '\\\\.Rmd$', full.names = TRUE); lapply(files, rmarkdown::render)"
-
-      - name: Build and check package (as CRAN)
-        run: |
-          R CMD build .
-          R CMD check *tar.gz --as-cran
-
-      - name: Upload Check Results
-        uses: actions/upload-artifact@v4
+      - uses: r-lib/actions/check-r-package@v2
         with:
-          name: R-CMD-check-results
-          path: '**/*.Rcheck'  # Upload all .Rcheck files from any directory
-
-      - name: Upload Package
-        uses: actions/upload-artifact@v4
-        with:
-          name: R-Package
-          path: '*.tar.gz'
+          upload-snapshots: true
+          build_args: 'c("--no-manual","--compact-vignettes=gs+qpdf")'
