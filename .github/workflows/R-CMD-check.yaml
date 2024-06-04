@@ -36,7 +36,7 @@ jobs:
 
       - name: Render vignettes (using R)
         run: |
-          R -e "files <- list.files('vignettes', pattern = '\\.Rmd$', full.names = TRUE); lapply(files, rmarkdown::render)"
+          R -e "files <- list.files('vignettes', pattern = '\\\\.Rmd$', full.names = TRUE); lapply(files, rmarkdown::render)"
 
       - name: Build and check package (as CRAN)
         run: |
