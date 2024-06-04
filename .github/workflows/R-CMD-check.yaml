@@ -4,31 +4,31 @@ on: [push, pull_request]
 
 jobs:
   R-CMD-check:
-    runs-on: ubuntu-latest  
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-r@v2
         with:
-          r-version: '4.4.0'  
+          r-version: '4.4.0'
 
       - name: Check R version
         run: |
           R -e 'cat(R.version.string, "\n")'
 
       - name: Install R dependencies (using cache)
-        uses: actions/cache@v4  
+        uses: actions/cache@v4
         with:
           path: ${{ runner.temp }}/Rlibs
-          key: ${{ runner.os }}-r-4.4.0 
+          key: ${{ runner.os }}-r-4.4.0
           restore-keys: |
             ${{ runner.os }}-r-
 
       - name: Install system dependencies (if needed)
         run: |
-          sudo apt-get update  
-          sudo apt-get install -y libcurl4-openssl-dev libxml2-dev libssl-dev  
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libxml2-dev libssl-dev
 
       - name: Install R packages
         run: |
@@ -47,10 +47,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: R-CMD-check-results
-          path: check/*.Rcheck
+          path: '**/*.Rcheck'  # Upload all .Rcheck files from any directory
 
       - name: Upload Package
         uses: actions/upload-artifact@v4
         with:
           name: R-Package
-          path: *.tar.gz
+          path: '*.tar.gz'
