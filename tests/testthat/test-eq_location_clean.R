@@ -1,5 +1,5 @@
 # Test eq_location_clean function
-source("setup.R")
+library(testthat)
 
 test_that("eq_location_clean extracts the correct location name", {
   expect_equal(eq_location_clean("Mexico: Acapulco"), "Acapulco")

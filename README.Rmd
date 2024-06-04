@@ -11,6 +11,14 @@ library(devtools)
 
 # Earthquakes Package
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/hriisalu/earthquakes/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hriisalu/earthquakes/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
+## Note about the badge
+
+The package uses the R-CMD-check badge from GitHub instead of Travis because Travis does not offer a free version.
+
 ## Overview
 
 The `earthquakes` package provides tools for visualizing significant earthquake data from around the world. The dataset is obtained from the U.S. National Oceanographic and Atmospheric Administration (NOAA) and contains information about 5,933 earthquakes over approximately 4,000 years.

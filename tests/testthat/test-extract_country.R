@@ -1,5 +1,5 @@
 # Test extract_country function
-source("setup.R")
+library(testthat)
 
 test_that("extract_country extracts the correct country", {
   expect_equal(extract_country("Mexico: Acapulco"), "Mexico")

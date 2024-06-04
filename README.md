@@ -1,6 +1,16 @@
 
 # Earthquakes Package
 
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/hriisalu/earthquakes/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hriisalu/earthquakes/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
+## Note about the badge
+
+The package uses the R-CMD-check badge from GitHub instead of Travis
+because Travis does not offer a free version.
+
 ## Overview
 
 The `earthquakes` package provides tools for visualizing significant
@@ -98,7 +108,7 @@ specific time period:
 
 ``` r
 filtered_data <- cleaned_data %>%
- filter(YEAR > 1900, !is.na(DEATHS), !is.na(MAG), !is.na(DATE), COUNTRY == "MEXICO")
+  filter(YEAR > 1900, !is.na(DEATHS), !is.na(MAG), !is.na(DATE), COUNTRY == "MEXICO")
 ```
 
 Using `ggplot` and adding the `geom_timeline` function creates a

@@ -13,6 +13,19 @@
 #' location_name <- c("Mexico: Acapulco")
 #' extract_country(location_name)
 #' @export
+# extract_country <- function(location_name) {
+#   if (location_name == "" | is.na(location_name)) {
+#     return(NA)
+#   } else if (grepl(":", location_name)) {
+#     return(unlist(strsplit(location_name, ":"))[1])
+#   } else {
+#     return(location_name)
+#   }
+# }
+# extract_country <- function(location_name) {
+#   ifelse(location_name == "" | is.na(location_name), NA,
+#          ifelse(grepl(":", location_name), unlist(strsplit(location_name, ":"))[1], location_name))
+# }
 extract_country <- function(location_name) {
   ifelse(location_name == "" | is.na(location_name), NA,
     ifelse(grepl(":", location_name),
@@ -37,6 +50,29 @@ extract_country <- function(location_name) {
 #' eq_location_clean(locations)
 #' @importFrom tools toTitleCase
 #' @export
+# eq_location_clean <- function(location) {
+#   if (is.na(location) | location == "") {
+#     return(NA)
+#   } else if (grepl(":", location)) {
+#     cleaned_location <- sub(".*:", "", location)  # Remove everything before the colon
+#     cleaned_location <- trimws(cleaned_location)  # Remove leading and trailing whitespace
+#     cleaned_location <- tolower(cleaned_location)  # Convert to lowercase
+#     cleaned_location <- tools::toTitleCase(cleaned_location)  # Convert to title case
+#     return(cleaned_location)
+#   } else {
+#     return(NA)
+#   }
+# }
+# eq_location_clean <- function(location) {
+#   dat <- ifelse(is.na(location) | location == "", NA,
+#          ifelse(grepl(":", location), {
+#            cleaned_location <- sub(".*:", "", location)  # Remove everything before the colon
+#            cleaned_location <- trimws(cleaned_location)  # Remove leading and trailing whitespace
+#            cleaned_location <- tolower(cleaned_location)  # Convert to lowercase
+#            cleaned_location <- tools::toTitleCase(cleaned_location)  # Convert to title case
+#          }, NA))
+#   return(dat)
+# }
 eq_location_clean <- function(location) {
   ifelse(is.na(location) | location == "", NA,
     ifelse(grepl(":", location),
