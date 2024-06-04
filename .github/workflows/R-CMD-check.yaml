@@ -7,14 +7,14 @@ jobs:
     runs-on: ubuntu-latest  # Or another supported OS
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
       - name: Install R dependencies (using cache)
-        uses: actions/cache@v3  
+        uses: actions/cache@v4  
         with:
           path: ${{ runner.temp }}/Rlibs
           key: ${{ runner.os }}-r-${{ matrix.r-version }} 
@@ -25,14 +25,6 @@ jobs:
         run: |
           sudo apt-get update  # Update package lists (adjust based on your system)
           sudo apt-get install libcurl4-openssl-dev  
-
-      - name: Install dependencies (using devtools)
-        run: |
-          R -e 'install.packages("devtools")'  
-
-      - name: Install package dependencies
-        run: |
-          Rscript -e 'devtools::install_deps(dependencies = TRUE)' s
 
       - name: Render vignettes (using R)
         run: |
