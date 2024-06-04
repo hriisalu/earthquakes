@@ -20,7 +20,7 @@ sample_data <- data.frame(
 )
 
 test_that("geom_timeline_label can be added to a ggplot object", {
-  plot <- ggplot(sample_data, aes(x = DATE, y = COUNTRY, size = MAG, colour = DEATHS)) +
+  plot <- ggplot2::ggplot(sample_data, aes(x = DATE, y = COUNTRY, size = MAG, colour = DEATHS)) +
     geom_timeline_label()
   expect_s3_class(plot, "ggplot")
 })

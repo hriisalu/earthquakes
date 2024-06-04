@@ -49,9 +49,9 @@ library(dplyr)
 
 # Example dataset
 earthquakes <- data.frame(
-  date = as.Date(c('2000-01-01', '2001-01-01', '2002-01-01')),
+  date = as.Date(c("2000-01-01", "2001-01-01", "2002-01-01")),
   magnitude = c(7.0, 6.5, 8.0),
-  location = c('Place A', 'Place B', 'Place C')
+  location = c("Place A", "Place B", "Place C")
 )
 
 # Basic ggplot

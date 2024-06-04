@@ -18,7 +18,8 @@ The function cleans the NOAA earthquake dataset by creating a date column, conve
 \examples{
 \dontrun{
 raw_data <- read.delim(system.file("extdata", "earthquakes.tsv",
-  package = "earthquakes"), header = TRUE, sep = "\t")
+  package = "earthquakes"
+), header = TRUE, sep = "\t")
 cleaned_data <- eq_clean_data(raw_data)
 head(cleaned_data)
 }

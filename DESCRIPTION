@@ -1,10 +1,10 @@
 Package: earthquakes
 Type: Package
-Title: A package to analyze NOAA Significant Earthquakes data
+Title: A Package to Analyze NOAA Significant Earthquakes Data
 Version: 0.1.0
 Author: HR
-Maintainer: HR <hr@example.com>
-Description: This package provides tools to analyze the NOAA Significant Earthquakes dataset.
+Maintainer: HR <hr@hotmail.com>
+Description: Provides tools to analyze the NOAA Significant Earthquakes dataset, enabling users to perform comprehensive analyses and visualizations of earthquake data.
 License: GPL (>= 3)
 Imports:
     dplyr,
@@ -21,6 +21,7 @@ LazyData: true
 RoxygenNote: 7.2.3
 Encoding: UTF-8
 Suggests: 
+    devtools,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)

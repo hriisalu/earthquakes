@@ -16,7 +16,7 @@ This function creates a custom ggplot2 theme suitable for timeline plots of sign
 \dontrun{
 library(ggplot2)
 data <- data.frame(
-  x = as.Date('2020-01-01') + 0:4,
+  x = as.Date("2020-01-01") + 0:4,
   size = c(4, 5, 6, 7, 8),
   colour = c("red", "blue", "green", "purple", "orange")
 )

@@ -88,6 +88,9 @@ eq_location_clean <- function(location) {
   )
 }
 
+# Declare global variables
+utils::globalVariables(c("YEAR", "MO", "DY", "LATITUDE", "LONGITUDE", "LOCATION_NAME", "HR", "MN", "SEC"))
+
 
 #' Clean NOAA Earthquake Data
 #'

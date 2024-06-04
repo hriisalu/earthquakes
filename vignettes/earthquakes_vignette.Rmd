@@ -17,7 +17,6 @@ knitr::opts_chunk$set(
 ```{r setup, include=FALSE, echo = FALSE, message = FALSE, warning = FALSE}
 library(dplyr)
 library(ggplot2)
-library(devtools)
 library(earthquakes)
 ```
 
