@@ -9,7 +9,7 @@
 ## Note about the badge
 
 The package uses the R-CMD-check badge from GitHub instead of Travis
-because Travis does not offer a free version.
+because Travis does not offer a free version. The YAML file is located in the folder `.github/workflows/R-CMD-check.yaml`. To view the test results, navigate to the 'Actions' tab in the upper horizontal menu on GitHub.
 
 ## Overview
 
